@@ -1,16 +1,17 @@
-let userInput: unknown;
-let userName: string;
+type Admin = {
+  name: string;
+  privileges: string[];
+};
 
-userInput = 5;
-userInput = "Max";
+type Employee = {
+  name: string;
+  startDate: Date;
+};
 
-if (typeof userInput === "string") {
-  userName = userInput;
-}
+type ElevatedEmployee = Admin & Employee;
 
-function generateError(message: string, code: number): never {
-  throw { message: message, errorCode: code };
-}
-
-const result = generateError("エラーが発生しました", 500);
-console.log(result);
+const e1: ElevatedEmployee = {
+  name: "max",
+  privileges: ["create-server"],
+  startDate: new Date(),
+};
